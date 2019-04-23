@@ -45,6 +45,10 @@ void common_hal_busio_onewire_deinit(busio_onewire_obj_t* self) {
     shared_module_bitbangio_onewire_deinit(&self->bitbang);
 }
 
+void common_hal_busio_onewire_mode(busio_onewire_obj_t *self, uint8_t mode) {
+    shared_module_bitbangio_onewire_mode(&self->bitbang, mode);
+}
+
 bool common_hal_busio_onewire_reset(busio_onewire_obj_t* self) {
     return shared_module_bitbangio_onewire_reset(&self->bitbang);
 }
@@ -53,7 +57,25 @@ bool common_hal_busio_onewire_read_bit(busio_onewire_obj_t* self) {
     return shared_module_bitbangio_onewire_read_bit(&self->bitbang);
 }
 
+bool common_hal_busio_onewire_read_byte(busio_onewire_obj_t* self, uint8_t* value) {
+    return shared_module_bitbangio_onewire_read_byte(&self->bitbang, value);
+}
+
+uint8_t common_hal_busio_onewire_read(busio_onewire_obj_t *self, uint8_t device_addr,
+        uint8_t * data, size_t len) {
+    return shared_module_bitbangio_onewire_read(&self->bitbang, device_addr, data, len);
+}
+
 void common_hal_busio_onewire_write_bit(busio_onewire_obj_t* self,
         bool bit) {
     shared_module_bitbangio_onewire_write_bit(&self->bitbang, bit);
+}
+
+bool common_hal_busio_onewire_write_byte(busio_onewire_obj_t* self, uint8_t value) {
+    return shared_module_bitbangio_onewire_write_byte(&self->bitbang, value);
+}
+
+uint8_t common_hal_busio_onewire_write(busio_onewire_obj_t *self, uint8_t device_addr,
+        uint8_t memory_addr, uint8_t * data, size_t len) {
+    return shared_module_bitbangio_onewire_write(&self->bitbang, device_addr, memory_addr, data, len);
 }

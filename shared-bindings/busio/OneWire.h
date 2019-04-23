@@ -36,8 +36,13 @@ extern void common_hal_busio_onewire_construct(busio_onewire_obj_t* self,
     const mcu_pin_obj_t* pin);
 extern void common_hal_busio_onewire_deinit(busio_onewire_obj_t* self);
 extern bool common_hal_busio_onewire_deinited(busio_onewire_obj_t* self);
+extern void common_hal_busio_onewire_mode(busio_onewire_obj_t* self, uint8_t mode);
 extern bool common_hal_busio_onewire_reset(busio_onewire_obj_t* self);
 extern bool common_hal_busio_onewire_read_bit(busio_onewire_obj_t* self);
+extern bool common_hal_busio_onewire_read_byte(busio_onewire_obj_t* self, uint8_t* value);
+extern uint8_t common_hal_busio_onewire_read(busio_onewire_obj_t *self, uint8_t device_addr, uint8_t * data, size_t len);
 extern void common_hal_busio_onewire_write_bit(busio_onewire_obj_t* self, bool bit);
+extern bool common_hal_busio_onewire_write_byte(busio_onewire_obj_t* self, uint8_t value);
+extern uint8_t common_hal_busio_onewire_write(busio_onewire_obj_t *self, uint8_t device_addr, uint8_t memory_addr, uint8_t * data, size_t len);
 
 #endif // MICROPY_INCLUDED_SHARED_BINDINGS_BUSIO_ONEWIRE_H

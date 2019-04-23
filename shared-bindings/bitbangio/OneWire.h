@@ -36,8 +36,13 @@ extern void shared_module_bitbangio_onewire_construct(bitbangio_onewire_obj_t* s
     const mcu_pin_obj_t* pin);
 extern void shared_module_bitbangio_onewire_deinit(bitbangio_onewire_obj_t* self);
 extern bool shared_module_bitbangio_onewire_deinited(bitbangio_onewire_obj_t* self);
+extern void shared_module_bitbangio_onewire_mode(bitbangio_onewire_obj_t* self, uint8_t mode);
 extern bool shared_module_bitbangio_onewire_reset(bitbangio_onewire_obj_t* self);
 extern bool shared_module_bitbangio_onewire_read_bit(bitbangio_onewire_obj_t* self);
+extern bool shared_module_bitbangio_onewire_read_byte(bitbangio_onewire_obj_t* self, uint8_t* value);
+extern uint8_t shared_module_bitbangio_onewire_read(bitbangio_onewire_obj_t *self, uint8_t device_addr, uint8_t * data, size_t len);
 extern void shared_module_bitbangio_onewire_write_bit(bitbangio_onewire_obj_t* self, bool bit);
+extern bool shared_module_bitbangio_onewire_write_byte(bitbangio_onewire_obj_t* self, uint8_t value);
+extern uint8_t shared_module_bitbangio_onewire_write(bitbangio_onewire_obj_t *self, uint8_t device_addr, uint8_t memory_addr, uint8_t * data, size_t len);
 
 #endif // MICROPY_INCLUDED_SHARED_BINDINGS_BITBANGIO_ONEWIRE_H

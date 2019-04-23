@@ -112,14 +112,11 @@ void common_hal_digitalio_digitalinout_set_value(
 bool common_hal_digitalio_digitalinout_get_value(
         digitalio_digitalinout_obj_t* self) {
     const uint8_t pin = self->pin->number;
-    if (!self->output) {
+    
+    if (!self->output || self->open_drain) {
         return gpio_get_pin_level(pin);
     } else {
-        if (self->open_drain && hri_port_get_DIR_reg(PORT, GPIO_PORT(pin), 1U << GPIO_PIN(pin)) == 0) {
-            return true;
-        } else {
-            return hri_port_get_OUT_reg(PORT, GPIO_PORT(pin), 1U << GPIO_PIN(pin));
-        }
+        return hri_port_get_OUT_reg(PORT, GPIO_PORT(pin), 1U << GPIO_PIN(pin));
     }
 }
 

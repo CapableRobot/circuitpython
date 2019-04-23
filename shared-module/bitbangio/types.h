@@ -40,9 +40,14 @@ typedef struct {
     volatile bool locked;
 } bitbangio_i2c_obj_t;
 
+#define IO_MODE_ONEWIRE     0
+#define IO_MODE_SINGLEWIRE  1
+#define IO_MODE_SIO         2
+
 typedef struct {
     mp_obj_base_t base;
     digitalio_digitalinout_obj_t pin;
+    uint8_t mode:2;
 } bitbangio_onewire_obj_t;
 
 typedef struct {
